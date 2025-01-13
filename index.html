@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Interactive Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: #3498db;
+        }
+        button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        .counter {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+        .message {
+            margin-top: 20px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Interactive Page!</h1>
+        
+        <div class="counter">Click count: <span id="count">0</span></div>
+        
+        <button onclick="incrementCounter()">Click me!</button>
+        <button onclick="changeColor()">Change Color</button>
+        
+        <div id="colorBox" class="color-box"></div>
+        
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        let count = 0;
+        const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#1abc9c'];
+        let colorIndex = 0;
+
+        function incrementCounter() {
+            count++;
+            document.getElementById('count').textContent = count;
+            updateMessage();
+        }
+
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            document.getElementById('colorBox').style.backgroundColor = colors[colorIndex];
+        }
+
+        function updateMessage() {
+            const messages = [
+                "Keep clicking!",
+                "You're doing great!",
+                "Almost there!",
+                "You're a natural!",
+                "Amazing progress!"
+            ];
+            const messageIndex = Math.floor(count / 5) % messages.length;
+            document.getElementById('message').textContent = messages[messageIndex];
+        }
+    </script>
+</body>
+</html>
